@@ -1,16 +1,14 @@
 package com.example.cryptocurrencytable.di
 
-import com.example.cryptocurrencytable.data.RemoteDataSourceHandler
-import com.example.cryptocurrencytable.data.RemoteDataSourceHandlerImpl
+import com.example.cryptocurrencytable.data.RemoteDataSourceHelper
+import com.example.cryptocurrencytable.data.RemoteDataSourceHelperImpl
 import com.example.cryptocurrencytable.data.network.CCTAPIService
 import com.example.cryptocurrencytable.utils.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -64,7 +62,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun getRemoteDataSourceHandler(): RemoteDataSourceHandler {
-        return RemoteDataSourceHandlerImpl()
+    fun getRemoteDataSourceHandler(): RemoteDataSourceHelper {
+        return RemoteDataSourceHelperImpl()
     }
 }

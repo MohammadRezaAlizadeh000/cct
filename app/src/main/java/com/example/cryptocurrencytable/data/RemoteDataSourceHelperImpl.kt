@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import retrofit2.Call
 import retrofit2.Response
 
-class RemoteDataSourceHandlerImpl: RemoteDataSourceHandler {
+class RemoteDataSourceHelperImpl: RemoteDataSourceHelper {
 
     override fun <T>getResponse(requestFunction: () -> Response<T>): Single<AppState<T>> {
         return Single.create<AppState<T>?> { emitter ->

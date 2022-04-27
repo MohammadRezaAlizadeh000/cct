@@ -8,15 +8,15 @@ import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(
     private val cctAPIService: CCTAPIService,
-    private val handlerImpl: RemoteDataSourceHandler
+    private val helperImpl: RemoteDataSourceHelper
 ) {
 
     fun getAllExchanges(): Single<AppState<List<ExchangesResponseModelItem>>> {
-        return handlerImpl.getCallback { cctAPIService.getExchangesList() }
+        return helperImpl.getCallback { cctAPIService.getExchangesList() }
     }
 
     fun getSingleExchange(exchangeId: String): Single<AppState<ExchangesResponseModelItem>> {
-        return handlerImpl.getResponse { cctAPIService.getSingleExchange(exchangeId) }
+        return helperImpl.getResponse { cctAPIService.getSingleExchange(exchangeId) }
     }
 
 }

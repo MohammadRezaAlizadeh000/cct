@@ -1,8 +1,8 @@
-package com.example.cryptocurrencytable.di
+package com.example.cryptocurrencytable
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class MyApplicationClass: Application() {
+class MyApplication: Application() {
 }

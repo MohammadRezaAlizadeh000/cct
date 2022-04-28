@@ -1,12 +1,14 @@
 package com.example.cryptocurrencytable.di
 
-import com.example.cryptocurrencytable.data.RemoteDataSourceHelper
-import com.example.cryptocurrencytable.data.RemoteDataSourceHelperImpl
+import android.content.Context
+import com.example.cryptocurrencytable.data.remote.RemoteDataSourceHelper
+import com.example.cryptocurrencytable.data.remote.RemoteDataSourceHelperImpl
 import com.example.cryptocurrencytable.data.network.CCTAPIService
 import com.example.cryptocurrencytable.utils.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -62,7 +64,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun getRemoteDataSourceHandler(): RemoteDataSourceHelper {
-        return RemoteDataSourceHelperImpl()
+    fun getRemoteDataSourceHandler(@ApplicationContext context: Context): RemoteDataSourceHelper {
+        return RemoteDataSourceHelperImpl(context)
     }
 }

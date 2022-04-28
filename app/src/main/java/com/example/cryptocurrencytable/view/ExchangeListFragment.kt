@@ -9,6 +9,7 @@ import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.cryptocurrencytable.utils.AppState
+import com.example.cryptocurrencytable.utils.toast
 import com.example.cryptocurrencytable.viewmodel.ExchangeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -24,7 +25,7 @@ class ExchangeListFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         return FrameLayout(container?.context!!)
     }
 
@@ -34,9 +35,14 @@ class ExchangeListFragment: Fragment() {
         viewModel.exChanges.observeOn(AndroidSchedulers.mainThread())
             .subscribe ({ data ->
                 when(data) {
-                    is AppState.Error -> Log.d("REQUEST_TAG", "${data.message}")
+                    is AppState.Error -> {
+                        Log.d("REQUEST_TAG", "${data.message}")
+                        toast(data.message.toString())
+                    }
                     is AppState.Loading -> Log.d("REQUEST_TAG", "in Fragment -------> onLoading")
                     is AppState.Success -> Log.d("REQUEST_TAG", "${data.data}")
+//                    is AppState.NoInternet -> {}
+
                 }
             }, { e ->
                 Log.d("REQUEST_TAG", " in fragment ----------> ${e.message}")

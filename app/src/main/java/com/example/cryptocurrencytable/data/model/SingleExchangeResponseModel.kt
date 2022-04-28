@@ -1,9 +1,9 @@
-package com.example.cryptocurrencytable.model
+package com.example.cryptocurrencytable.data.model
 
 
 import com.google.gson.annotations.SerializedName
 
-data class ExchangesResponseModelItem(
+data class SingleExchangeResponseModel(
     @SerializedName("data_end")
     val dataEnd: String?,
     @SerializedName("data_orderbook_end")

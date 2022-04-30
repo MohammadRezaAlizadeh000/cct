@@ -11,7 +11,7 @@ import javax.inject.Inject
 class Repository @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource
-): ExchangesUseCase {
+) : ExchangesUseCase {
 
     override fun getAllExchanges(): Single<AppState<List<SingleExchangeModel>>> {
         return remoteDataSource.getAllExchanges()

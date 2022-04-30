@@ -31,6 +31,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -61,6 +64,9 @@ dependencies {
 
     // Jetpack view model provider
     implementation("androidx.fragment:fragment-ktx:1.4.1")
+
+    // Swipe Refresh layout
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
